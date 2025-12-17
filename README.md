@@ -115,7 +115,7 @@ Bu proje MIT lisansı altında lisanslanmıştır.
 
 ## 🎯 Sağlık İpuçları
 
-- **Su**: Günde en az 8 bardak su için
+- **Su**: Günde en az 8 bardak su içmeye çalışın
 - **Egzersiz**: Haftada en az 150 dakika orta yoğunlukta egzersiz yapın
 - **Uyku**: Düzenli uyku saatleri belirleyin ve 7-9 saat arası uyumaya çalışın
 - **Ruh Hali**: Kendinizi nasıl hissettiğinizi fark edin ve gerektiğinde profesyonel destek alın

@@ -112,7 +112,7 @@ function updateExerciseDisplay() {
 }
 
 // Mood tracking functions
-function setMood(emoji, description) {
+function setMood(emoji, description, event) {
     healthData.mood = description;
     healthData.moodEmoji = emoji;
     saveData();
@@ -123,7 +123,9 @@ function setMood(emoji, description) {
     document.querySelectorAll('.mood-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-    event.target.classList.add('active');
+    if (event && event.target) {
+        event.target.classList.add('active');
+    }
 }
 
 function updateMoodDisplay() {
@@ -253,12 +255,30 @@ function displayDate() {
 
 // Check if date has changed and reset if needed
 function checkDateChange() {
-    setInterval(() => {
-        const currentDate = new Date().toDateString();
-        if (healthData.date !== currentDate) {
-            resetDay();
-        }
-    }, 60000); // Check every minute
+    const now = new Date();
+    const currentDate = now.toDateString();
+    
+    if (healthData.date !== currentDate) {
+        // Date has changed, reset data
+        healthData = {
+            water: 0,
+            exercise: 0,
+            sleep: 0,
+            mood: null,
+            moodEmoji: null,
+            date: currentDate
+        };
+        saveData();
+        updateDisplay();
+    }
+    
+    // Calculate time until next midnight
+    const tomorrow = new Date(now);
+    tomorrow.setHours(24, 0, 0, 0);
+    const timeUntilMidnight = tomorrow - now;
+    
+    // Schedule next check at midnight
+    setTimeout(checkDateChange, timeUntilMidnight);
 }
 
 // Notification system
