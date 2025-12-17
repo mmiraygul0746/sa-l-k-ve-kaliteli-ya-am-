@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sağlık ve Kaliteli Yaşam Takipçisi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌟 Sağlık ve Kaliteli Yaşam Takipçisi</h1>
+            <p class="subtitle">Sağlıklı yaşam için günlük alışkanlıklarınızı takip edin</p>
+        </header>
+
+        <div class="stats-overview">
+            <div class="stat-card">
+                <span class="stat-icon">💧</span>
+                <h3>Su İçme</h3>
+                <p class="stat-value" id="water-total">0 / 8 bardak</p>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🏃</span>
+                <h3>Egzersiz</h3>
+                <p class="stat-value" id="exercise-total">0 dk</p>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">😊</span>
+                <h3>Ruh Hali</h3>
+                <p class="stat-value" id="mood-display">-</p>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">😴</span>
+                <h3>Uyku</h3>
+                <p class="stat-value" id="sleep-total">0 saat</p>
+            </div>
+        </div>
+
+        <div class="trackers">
+            <!-- Water Tracker -->
+            <div class="tracker-card">
+                <h2>💧 Su İçme Takibi</h2>
+                <p>Günlük hedef: 8 bardak su</p>
+                <div class="water-glasses" id="water-glasses">
+                    <button class="glass-btn" onclick="addWater()">+ Bardak Ekle</button>
+                    <button class="glass-btn reset-btn" onclick="resetWater()">Sıfırla</button>
+                </div>
+            </div>
+
+            <!-- Exercise Tracker -->
+            <div class="tracker-card">
+                <h2>🏃 Egzersiz Takibi</h2>
+                <div class="input-group">
+                    <input type="number" id="exercise-input" placeholder="Dakika" min="0">
+                    <button onclick="addExercise()">Ekle</button>
+                </div>
+            </div>
+
+            <!-- Mood Tracker -->
+            <div class="tracker-card">
+                <h2>😊 Ruh Hali Takibi</h2>
+                <div class="mood-buttons">
+                    <button class="mood-btn" onclick="setMood('😢', 'Üzgün', event)">😢</button>
+                    <button class="mood-btn" onclick="setMood('😐', 'Normal', event)">😐</button>
+                    <button class="mood-btn" onclick="setMood('🙂', 'İyi', event)">🙂</button>
+                    <button class="mood-btn" onclick="setMood('😊', 'Mutlu', event)">😊</button>
+                    <button class="mood-btn" onclick="setMood('😄', 'Çok Mutlu', event)">😄</button>
+                </div>
+            </div>
+
+            <!-- Sleep Tracker -->
+            <div class="tracker-card">
+                <h2>😴 Uyku Takibi</h2>
+                <div class="input-group">
+                    <input type="number" id="sleep-input" placeholder="Saat" min="0" max="24" step="0.5">
+                    <button onclick="setSleep()">Kaydet</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="history">
+            <h2>📊 Bugünün Özeti</h2>
+            <div id="daily-summary" class="summary-content">
+                Henüz veri yok. Yukarıdaki takipçileri kullanarak günlük aktivitelerinizi kaydedin!
+            </div>
+        </div>
+
+        <footer>
+            <button class="reset-day-btn" onclick="resetDay()">Günü Sıfırla</button>
+            <p class="date" id="current-date"></p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
